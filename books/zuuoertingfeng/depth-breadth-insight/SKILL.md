@@ -183,5 +183,5 @@ related_skills:
 ## 审计信息
 
 - **验证通过**: V1 ✓ / V2 ✓ / V3 ✓
-- **测试通过率**: {{%}} (详见 test-prompts.json)
+- **测试通过率**: 9/9 (详见 test-prompts.json)
 - **蒸馏时间**: 2026-05-07

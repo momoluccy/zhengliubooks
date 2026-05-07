@@ -1,0 +1,72 @@
+{
+  "skill": "do-right-things",
+  "version": "0.1.0",
+  "source_book": "《左耳听风：传奇程序员练级攻略》陈皓",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们团队代码没有自动化测试，我想推动但怕同事抵触、领导不支持，值不值得做？",
+      "expected_behavior": "应激活 do-right-things，用五条标准（长期收益、质的成长、提高效率、解放生产力、增强竞争力）逐条检验'推动自动化测试'的价值",
+      "notes": "匹配A2场景3：'想推动流程改进但怕得罪人'，典型触发"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "领导让我跳过测试直接上线，我知道不应该但不知道怎么拒绝",
+      "expected_behavior": "应激活 do-right-things，用五条标准帮用户分析'跳过测试上线'的长期危害，并给出带着摩擦前进的策略",
+      "notes": "匹配A2场景5：'上级要求做明显错误的事'"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "系统已经千疮百孔了，是该先还技术债还是先做新功能？团队在摇摆",
+      "expected_behavior": "应激活 do-right-things，用五条标准检验'还技术债'和'堆功能'两个选项的长期价值，给出优先级建议",
+      "notes": "匹配A2场景4：'技术债困境'，也涉及语言信号'该先还技术债还是先做新功能'"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我知道应该重构，但是业务方一直在催新功能，一直没有时间做，怎么办？",
+      "expected_behavior": "应激活 do-right-things，用五条标准评估重构的长期价值，并给出在业务压力下推动正确之事的策略（如小范围试点）",
+      "notes": "匹配语言信号：'我知道应该做X，但是...'"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们项目要在Redis和Memcached之间选一个，怎么评估？",
+      "expected_behavior": "不应激活 do-right-things，应指向 tech-selection",
+      "notes": "诱饵类型：涉及'评估和选择'但属于技术产品选型，应触发 tech-selection"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "程序员35岁以后怎么办？该不该转管理？",
+      "expected_behavior": "不应激活 do-right-things，应指向 career-three-goals",
+      "notes": "诱饵类型：涉及'该不该做某事'但属于职业方向规划，应触发 career-three-goals"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "每天下班后只有1小时，我是学Rust好还是补基础好？",
+      "expected_behavior": "不应激活 do-right-things，应指向 time-value-invest",
+      "notes": "诱饵类型：涉及'选择做什么'但属于时间价值分配，应触发 time-value-invest"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "公司快发不出工资了，老板让我加班赶一个外包项目，该不该做？",
+      "expected_behavior": "不应激活 do-right-things 的完整五条标准框架。B边界排除'生存期决策'——当团队处于生存危机时，短期利益高于一切。应直接给出务实建议：先解决生存问题，不要在此场景套用长期主义框架",
+      "notes": "边界场景：生存期决策（B边界排除）vs 技术决策（A2触发）"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我想推动团队做代码审查，但团队只有3个人，项目也还在早期，值不值得现在做？",
+      "expected_behavior": "可激活 do-right-things 做价值评估，但需要注意边界——对于3人小团队和项目早期，五条标准中的'长期收益'和'提高效率'可能需要做务实调整。建议先做轻量级代码审查（如互相看看关键PR），而非一上来就推完整的审查流程",
+      "notes": "边界场景：团队规模小、项目早期时'做正确的事'的适配问题"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

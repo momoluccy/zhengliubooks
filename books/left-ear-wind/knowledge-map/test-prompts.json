@@ -1,0 +1,72 @@
+{
+  "skill": "knowledge-map",
+  "version": "0.1.0",
+  "source_book": "《左耳听风：传奇程序员练级攻略》陈皓",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "在学习分布式系统，知识点太散了串不起来，怎么系统地学？",
+      "expected_behavior": "应激活 knowledge-map，帮用户找到分布式系统的主干概念，分出2-4个主枝，开始联想挂载",
+      "notes": "匹配A2场景2：'知识碎片化'+语言信号'知识点太散了，串不起来'"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "看了一本800页的书，看了后面忘了前面，怎么记不住呢？",
+      "expected_behavior": "应激活 knowledge-map，引导用户从线性记忆转为树状结构，用联想记忆法把知识挂到树上",
+      "notes": "匹配A2场景3：'读书记不住'+语言信号'看了后面忘了前面'"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "需要给团队做个Kubernetes的技术分享，怎么快速梳理出这个领域的知识结构？",
+      "expected_behavior": "应激活 knowledge-map，帮用户快速画出K8s的主干和主枝，形成可分享的知识树结构",
+      "notes": "匹配A2场景4：'快速向他人解释一个领域'"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "准备面试，Redis的知识点散落在各处，怎么组织成系统的结构？",
+      "expected_behavior": "应激活 knowledge-map，帮用户把Redis相关知识点组织成有主干、主枝和层级的知识树",
+      "notes": "匹配A2场景5：'准备面试'——需要把散落知识组织成可检索的结构"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我是全栈工程师，什么都会一点但什么都不精，怎么选一个方向深入？",
+      "expected_behavior": "不应激活 knowledge-map，应指向 depth-breadth-insight",
+      "notes": "诱饵类型：涉及'知识广度'但属于学习策略选择（深度vs广度），应触发 depth-breadth-insight"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想系统地学习Go语言，怎么制定学习路线？",
+      "expected_behavior": "不应激活 knowledge-map，应指向 tech-learning-sop",
+      "notes": "诱饵类型：涉及'系统学习'但属于技术学习的路线规划，应触发 tech-learning-sop"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "什么是RAFT共识算法？能不能解释一下？",
+      "expected_behavior": "不应激活 knowledge-map，这是只需查一个具体知识点的场景，B边界排除",
+      "notes": "诱饵类型：涉及'知识'但只需查一个具体概念，不需要构建知识地图"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "明天要面试了，怎么快速把Java的知识点整理一遍？",
+      "expected_behavior": "不应激活 knowledge-map 的完整五步流程——B边界排除'时间极紧张的应试场景'。明天面试时构建知识地图的投入产出比不如直接刷面试题。应建议先刷高频面试题，面试后再用知识地图法系统整理",
+      "notes": "边界场景：紧急应试（B边界排除）vs 知识组织需求"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "学了就忘，感觉知识碎片化，但又不知道怎么画知识树，有没有具体方法？",
+      "expected_behavior": "可同时触发 knowledge-map（知识组织方法）和 deep-learning-trio（学习过程诊断——缝合环节问题）。应根据用户聚焦点判断：若用户聚焦'怎么画知识树'则用 knowledge-map；若聚焦'为什么学了就忘'则先诊断学习过程。两者可组合使用：knowledge-map 是 deep-learning-trio '缝合'环节的具体工具",
+      "notes": "边界场景：知识组织方法（knowledge-map）vs 学习过程诊断（deep-learning-trio）的缝合环节"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

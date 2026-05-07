@@ -1,0 +1,72 @@
+{
+  "skill": "five-step-thinking",
+  "version": "0.1.0",
+  "source_book": "《左耳听风：传奇程序员练级攻略》陈皓",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我看到一篇文章说'微服务已经过时了，未来是单体回归的时代'，这靠谱吗？我该怎么判断？",
+      "expected_behavior": "应激活 five-step-thinking，引导用户从信息源甄别、逻辑因果检验、基准线对标等五步系统分析该主张",
+      "notes": "典型触发：用户面对一个技术主张需要判断可信度，明确说'这靠谱吗'"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "同事在技术方案评审会上说'A方案比B方案好'，理由是'A用的新技术'。我感觉这个结论有问题但说不出哪里不对",
+      "expected_behavior": "应激活 five-step-thinking，帮用户拆解同事的逻辑链条，检验因果关系中是否把'新技术'当成了'更好'的充分条件",
+      "notes": "语言信号完全匹配：'我感觉这个结论有问题，但说不出哪里不对'"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "有人说'Go语言会完全取代Java'，我有点怀疑但不知道怎么系统地分析这个说法",
+      "expected_behavior": "应激活 five-step-thinking，从集合包含关系检验（Go的适用场景是否完全包含Java）、基准线对标（业内数据）等维度分析",
+      "notes": "匹配A2触发场景1：需要判断技术主张可信度"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "很多人都说'35岁必须转管理'，我该怎么评估这个说法？",
+      "expected_behavior": "应激活 five-step-thinking，对'35岁必须转管理'这个主张做信息源甄别、逻辑因果检验、基准线对标",
+      "notes": "匹配A2触发场景3：职业建议的可信度判断"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我想系统地学习Rust，怎么制定学习计划？",
+      "expected_behavior": "不应激活 five-step-thinking，应指向 tech-learning-sop",
+      "notes": "诱饵类型：看似涉及'判断和思考'但实际是系统学习技术，应触发 tech-learning-sop"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我该怎么提升自己的核心竞争力？现在工作三年了，感觉没什么不可替代的",
+      "expected_behavior": "不应激活 five-step-thinking，应指向 competency-leap",
+      "notes": "诱饵类型：涉及'判断自己竞争力'但实际是竞争力发展阶段诊断，应触发 competency-leap"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "Python的GIL是什么？为什么会影响多线程性能？",
+      "expected_behavior": "不应激活 five-step-thinking，这是纯事实查询，直接回答即可",
+      "notes": "诱饵类型：涉及技术概念但属于纯事实查询，B边界明确排除"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我看到了一个关于Rust和Go性能对比的benchmark，想判断这个测试结果是否靠谱",
+      "expected_behavior": "可激活 five-step-thinking 做信息源甄别和基准线对标，但也可部分涉及 tech-selection 的四条件评估。应根据用户意图判断：若聚焦'这个benchmark靠不靠谱'则用 five-step-thinking；若聚焦'选Rust还是Go'则用 tech-selection",
+      "notes": "边界场景：benchmark可靠性判断（五步思考法）vs 技术选型（tech-selection）的交叉地带"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "我在网上看到有人说'学算法没用，工作中根本用不到'，我该怎么看这个说法？",
+      "expected_behavior": "应激活 five-step-thinking 分析该主张，但也可能涉及 info-source-quality 的信息源质量评估。主skill应为 five-step-thinking（评判主张），info-source-quality 作为辅助",
+      "notes": "边界场景：评判一个具体说法（five-step-thinking）vs 评估信息源质量（info-source-quality）"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

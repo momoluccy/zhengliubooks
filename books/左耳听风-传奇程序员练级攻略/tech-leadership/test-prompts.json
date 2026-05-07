@@ -1,0 +1,72 @@
+{
+  "skill": "tech-leadership",
+  "version": "0.1.0",
+  "source_book": "《左耳听风：传奇程序员练级攻略》陈皓",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "刚当上技术Leader，团队里有些人技术比我强，怎么建立威信？",
+      "expected_behavior": "应激活 tech-leadership，通过四个支柱的诊断，帮用户找到建立技术领导力的切入点",
+      "notes": "匹配A2场景1：'刚被提升为Tech Lead'+语言信号'怎么建立威信'"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "做技术管理三年了，越来越不写代码，担心脱离技术但不知道怎么平衡",
+      "expected_behavior": "应激活 tech-leadership，重点补强'支柱四（高标准要求自己）'——建立'永远编程'的纪律，给出每周最低编码时间建议",
+      "notes": "匹配A2场景2：'管理后不写代码'+语言信号'做管理后还要不要写代码'"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "作为技术负责人，想推动代码审查和自动化测试，但团队抵触，怎么在团队中推动技术最佳实践？",
+      "expected_behavior": "应激活 tech-leadership，围绕'支柱三（坚持做正确的事）'给出带着摩擦前进的策略",
+      "notes": "匹配A2场景3：'团队技术标准低'+语言信号'怎么推动技术最佳实践'"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "我想走技术路线不走管理路线，怎么在技术路线上建立影响力？",
+      "expected_behavior": "应激活 tech-leadership，帮用户通过四个支柱（特别是基础技术和学习能力）建立非管理职位的技术影响力",
+      "notes": "匹配A2场景4：'想成为技术专家而非管理者'+语言信号'走技术路线不走管理路线'"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "团队有个人绩效一直很差，怎么和他沟通？该怎么考核？",
+      "expected_behavior": "不应激活 tech-leadership，这是纯管理问题（绩效考核），B边界排除",
+      "notes": "诱饵类型：涉及'团队管理'但属于纯管理问题（招聘、绩效），非技术领导力"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我该怎么提升核心竞争力？工作三年了想突破瓶颈",
+      "expected_behavior": "不应激活 tech-leadership，应指向 competency-leap",
+      "notes": "诱饵类型：涉及'提升'和'突破'但属于竞争力发展阶段诊断，不是领导力建设"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "该不该转管理？做技术做了五年了，纠结要不要走管理路线",
+      "expected_behavior": "不应激活 tech-leadership，应指向 career-three-goals（职业方向选择）或 competency-leap（竞争力跃迁）",
+      "notes": "诱饵类型：涉及'技术和管理路线'但属于职业方向选择，不是'怎么建立技术领导力'"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我已经五年没写代码了，现在做纯管理工作，感觉技术判断力在下降，还能恢复吗？",
+      "expected_behavior": "应谨慎使用 tech-leadership——B边界排除'已完全脱离技术的管理者'（5年以上不写代码且不想恢复编码）。但如果用户表达了'想恢复'的意愿，则可以激活，从'支柱一（基础技术）'和'支柱四（高标准）'开始重建。关键判断点是用户是否愿意恢复编码",
+      "notes": "边界场景：已脱离技术但想恢复（可激活）vs 完全不想编码（B边界排除）"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "作为创业公司CTO，既要带团队又要保持技术能力，感觉力不从心，怎么办？",
+      "expected_behavior": "可激活 tech-leadership 的四支柱模型，但需要适配创业CTO的特殊场景——资源有限、时间紧张。应优先保证'支柱四（永远编程）'的最低投入（每周至少4小时），其他支柱可以分阶段补强",
+      "notes": "边界场景：创业CTO的多重角色——tech-leadership 模型需要适配"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

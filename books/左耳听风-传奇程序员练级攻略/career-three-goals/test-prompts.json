@@ -1,0 +1,72 @@
+{
+  "skill": "career-three-goals",
+  "version": "0.1.0",
+  "source_book": "《左耳听风：传奇程序员练级攻略》陈皓",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "程序员35岁以后怎么办？在担心未来的发展方向",
+      "expected_behavior": "应激活 career-three-goals，定位用户当前所处阶段（职场/经历/自由），给出从当前阶段到下一层的行动路径",
+      "notes": "匹配语言信号：'35岁以后怎么办'是直接触发"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "想离职创业但又怕失去稳定收入，不确定自己准备好了没有",
+      "expected_behavior": "应激活 career-three-goals，诊断用户在'自由目标'层的进度（工作自由→技能自由→物质自由），评估是否具备创业条件",
+      "notes": "匹配A2场景3：'想离职创业'，语言信号完全匹配"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "在大厂做了五年了，薪资不错但感觉自己被困住了，接下来怎么走？",
+      "expected_behavior": "应激活 career-three-goals，定位用户可能卡在'职场目标'和'经历目标'的过渡期，帮助评估是否积累了有价值的经历",
+      "notes": "匹配A2场景1：'在大厂做几年接下来怎么走'+语言信号'感觉自己被困住了'"
+    },
+    {
+      "id": "should-trigger-04",
+      "type": "should_trigger",
+      "prompt": "拿到两个offer，一个大厂高薪但做内部工具，一个小公司降薪但做核心技术，怎么选？",
+      "expected_behavior": "应激活 career-three-goals，用'经历目标'和'自由目标'的视角分析两个offer的长期价值差异",
+      "notes": "匹配A2场景4：'offer选择困难'——不是纯薪资比较而是经历价值比较"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我知道应该推动代码审查，但怕同事不支持，值不值得做？",
+      "expected_behavior": "不应激活 career-three-goals，应指向 do-right-things",
+      "notes": "诱饵类型：涉及'值不值得做'但属于具体行动的价值判断，应触发 do-right-things"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我在A公司和B公司之间选，A薪资高2万，B离家近，怎么选？",
+      "expected_behavior": "不应激活 career-three-goals，这是短期跳槽决策（纯薪资/便利比较），B边界排除",
+      "notes": "诱饵类型：涉及'offer选择'但属于纯薪资比较的短期跳槽决策"
+    },
+    {
+      "id": "should-not-trigger-03",
+      "type": "should_not_trigger",
+      "prompt": "我该怎么提升核心竞争力？现在感觉没什么不可替代的",
+      "expected_behavior": "不应激活 career-three-goals，应指向 competency-leap",
+      "notes": "诱饵类型：涉及'职业发展'但属于竞争力提升路径，应触发 competency-leap"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我刚毕业一年，在大厂做开发，想规划一下未来五年的职业发展",
+      "expected_behavior": "可激活 career-three-goals，但需注意B边界排除'应届生求职'。用户已工作一年（非应届），有了一定职场目标基础，可以开始规划'经历目标'。但应避免过早讨论'自由目标'，重点放在'职场→经历'的过渡",
+      "notes": "边界场景：毕业一年（接近应届的早期职场人）vs 真正的职业规划需求"
+    },
+    {
+      "id": "edge-02",
+      "type": "edge_case",
+      "prompt": "不想一辈子打工，想做自己的事但不敢离开公司，怎么办？",
+      "expected_behavior": "可激活 career-three-goals（自由目标的递进规划）和 do-right-things（评估'离开公司做自己的事'是否正确）。主skill应为 career-three-goals，因为用户核心问题是职业大方向规划，但可配合 do-right-things 做具体行动的价值判断",
+      "notes": "边界场景：职业方向规划（career-three-goals）vs 具体行动决策（do-right-things）"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

@@ -16,3 +16,13 @@ timestamp	commit	skill	old_score	new_score	status	dimension	note	eval_mode
 2026-05-07T10:25	b5b07a0	info-source-quality	81.9	87.5	keep	指令具体性	添加评级决策矩阵	dry_run
 2026-05-07T10:30	15c9026	depth-breadth-insight	72.1	80.1	keep	指令具体性	结构化E段+输出模板+修复引用	dry_run
 2026-05-07T10:35	f9b9d54	depth-breadth-insight	80.1	87.8	keep	检查点设计	添加步骤0边界前置检查+3个检查点	dry_run
+2026-05-07T10:40	8da2b1f	time-value-invest	75.1	89.3	keep	指令具体性	结构化E段+四维评估表+修复引用	dry_run
+2026-05-07T10:50	302d722	knowledge-map	76.1	85.6	keep	指令具体性	树状模板+遍历格式+修复引用	dry_run
+2026-05-07T11:00	6c5a7c5	tech-selection	79.3	74.6	revert	指令具体性	模板改动未提升+引用修复保留	dry_run
+2026-05-07T11:00	6c5a7c5	career-three-goals	79.1	78.6	revert	指令具体性	模板改动未提升+引用修复保留	dry_run
+2026-05-07T11:10	326a780	tech-learning-sop	79.6	81.9	keep	指令具体性+检查点	E段模板+检查点	dry_run
+2026-05-07T11:10	326a780	competency-leap	80.6	84.4	keep	指令具体性+检查点	诊断表+行动计划模板	dry_run
+2026-05-07T11:10	326a780	five-step-thinking	81.6	81.1	revert	指令具体性+检查点	微降-评估者间差异	dry_run
+2026-05-07T11:10	326a780	tech-leadership	81.8	86.8	keep	指令具体性+检查点	四支柱诊断表+修复slug引用	dry_run
+2026-05-07T11:10	326a780	do-right-things	82.6	89.3	keep	指令具体性+检查点	五标准检查表+摩擦评估表	dry_run
+2026-05-07T11:10	326a780	deep-learning-trio	85.1	79.0	revert	指令具体性+检查点	微降-评估者间差异	dry_run
